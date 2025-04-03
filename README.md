@@ -1,8 +1,8 @@
-API Testing for Catfact Ninja
+# API Testing for Catfact Ninja
 Overview
 This document outlines the approach to testing the Catfact Ninja API, detailing the aspects to be tested, the rationale behind these tests, and the methodologies employed. Additionally, it includes three example tests implemented using Postman, along with a description of the setup process.
 
-What to Test
+## What to Test
 Endpoint Functionality: Verify that each API endpoint returns the expected responses for valid requests.
 
 Input Validation: Ensure the API correctly handles invalid or unexpected inputs.
@@ -13,7 +13,7 @@ Security: Confirm that the API is protected against common vulnerabilities and u
 
 Data Integrity: Validate that the data returned by the API is accurate and consistent.
 
-Why Test These Aspects
+## Why Test These Aspects
 Endpoint Functionality: To confirm that the API operates as intended and provides the correct data.
 
 Input Validation: To prevent potential errors or security issues arising from improper input handling.
@@ -24,7 +24,7 @@ Security: To protect the API and its data from unauthorized access and potential
 
 Data Integrity: To maintain user trust by providing reliable and accurate information.
 
-How to Test
+## How to Test
 Functional Testing: Use tools like Postman to send requests to each endpoint with both valid and invalid inputs, verifying that the responses are as expected.
 
 Performance Testing: Utilize load testing tools to simulate multiple concurrent requests and measure response times.
@@ -33,8 +33,8 @@ Security Testing: Conduct tests for common vulnerabilities such as SQL injection
 
 Data Validation: Cross-reference the data returned by the API with authoritative sources to verify its accuracy.
 
-Example Tests Using Postman
-1. Retrieve a Random Cat Fact
+### Example Tests Using Postman
+#### 1. Retrieve a Random Cat Fact
 Objective: Verify that the /fact endpoint returns a random cat fact.
 
 Request:
@@ -51,7 +51,7 @@ Response body contains a fact field with a non-empty string.
 
 Response body contains a length field that matches the length of the fact string.
 
-2. Retrieve a List of Cat Breeds with Pagination
+#### 2. Retrieve a List of Cat Breeds with Pagination
 Objective: Test the /breeds endpoint's ability to return a paginated list of cat breeds.
 
 Request:
@@ -74,7 +74,7 @@ Response body contains a data array with a maximum of 5 items.
 
 Each item in the data array includes the fields: breed, country, origin, coat, and pattern.
 
-3. Handle Invalid Endpoint Gracefully
+#### 3. Handle Invalid Endpoint Gracefully
 Objective: Ensure the API returns an appropriate error for an invalid endpoint.
 
 Request:
@@ -100,7 +100,7 @@ Environment Configuration: Set up environment variables in Postman for dynamic d
 
 Execution and Iteration: Ran the tests, reviewed the results, and refined the tests as necessary to ensure comprehensive coverage and accuracy.
 
-Additional Files
+#### Additional Files
 The exported Postman collection and any other necessary files are attached to this repository. To import and use the collection:
 
 Download the Catfact_Ninja_API_Tests.postman_collection.json file from this repository.
