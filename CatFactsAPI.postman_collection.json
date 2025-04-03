@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "b8408bad-85da-49f4-8920-a381d47c15ad",
+		"name": "CatFactsAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "942076"
+	},
+	"item": [
+		{
+			"name": "FlashMobile",
+			"item": [
+				{
+					"name": "Test 2: Validate API Response Time",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is within acceptable limits\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fact",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test 3: Validate API Response Schema",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const schema = {\r",
+									"    type: \"object\",\r",
+									"    properties: {\r",
+									"        fact: { type: \"string\" },\r",
+									"        length: { type: \"number\" }\r",
+									"    },\r",
+									"    required: [\"fact\", \"length\"]\r",
+									"};\r",
+									"\r",
+									"pm.test(\"Response matches expected schema\", function () {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fact",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test 1: Validate Successful Response for Cat Fact Endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response contains a fact\", function () {",
+									"    let jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('fact');",
+									"    pm.expect(jsonData.fact).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fact",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "breeds",
+			"item": [
+				{
+					"name": "Returns a list of breeds",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fact",
+			"item": [
+				{
+					"name": "Returns a random cat fact",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "facts",
+			"item": [
+				{
+					"name": "Get a list of cat facts",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
